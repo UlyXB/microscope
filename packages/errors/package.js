@@ -19,7 +19,7 @@ Package.onUse(function(api, where) {
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('bizfinder:errors');
-  api.addFiles('errors-tests.js');
+  api.use(['tinytest', 'test-helpers'], 'client');
+  api.use('bizfinder:errors', 'client');
+  api.addFiles('errors-tests.js', 'client');
 });
