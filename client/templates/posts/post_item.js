@@ -3,7 +3,8 @@ Template.postItem.helpers({
         return this.userId === Meteor.userId();
     },
     domain: function() {
-        var a = document.createElement('a'); a.href = this.url;
+        var a = document.createElement('a');
+        a.href = this.url;
         return a.hostname;
     }
 });
