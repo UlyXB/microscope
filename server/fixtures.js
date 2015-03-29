@@ -3,10 +3,10 @@ if (Posts.find().count() === 0) {
     var now = new Date().getTime();
 
 // create two users
-    var tomId = Meteor.users.insert({
-        profile: {name: 'Tom Coleman'}
+    var thyleId = Meteor.users.insert({
+        profile: {name: 'Thyle Carroll'}
     });
-    var tom = Meteor.users.findOne(tomId);
+    var thyle = Meteor.users.findOne(thyleId);
 
     var sachaId = Meteor.users.insert({
         profile: {name: 'Sacha Greif'}
@@ -24,8 +24,8 @@ if (Posts.find().count() === 0) {
 
     Comments.insert({
         postId: telescopeId,
-        userId: tom._id,
-        author: tom.profile.name,
+        userId: thyle._id,
+        author: thyle.profile.name,
         submitted: new Date(now - 5 * 3600 * 1000),
         body: 'Interesting project Sacha, can I get involved?'
     });
@@ -40,17 +40,28 @@ if (Posts.find().count() === 0) {
 
     Posts.insert({
         title: 'Meteor',
-        userId: tom._id,
-        author: tom.profile.name,
+        userId: thyle._id,
+        author: thyle.profile.name,
         url: 'http://meteor.com',
         submitted: new Date(now - 10 * 3600 * 1000)
     });
 
     Posts.insert({
         title: 'The Meteor Book',
-        userId: tom._id,
-        author: tom.profile.name,
+        userId: thyle._id,
+        author: thyle.profile.name,
         url: 'http://themeteorbook.com',
         submitted: new Date(now - 12 * 3600 * 1000)
     });
+
+    for (var i = 0; i < 10; i++) {
+        Posts.insert({
+        title: 'Test post #' + i,
+        author: thyle.profile.name,
+        userId: thyle._id,
+        url: 'http://google.com/?q=test-' + i,
+        submitted: new Date(now - i * 3600 * 1000),
+        commentsCount: 0
+    });
+  }
 }
